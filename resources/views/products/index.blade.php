@@ -28,9 +28,18 @@
 
 
 <div class="content mt-3">
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+    
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-body">
+            <div class="pull-right mb-3">
+                <a href="{{ url('products/create')}}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i>&nbsp;add</a>
+            </div>
                 <table class="table table-bordered">
                 <thead>
                     <tr>
