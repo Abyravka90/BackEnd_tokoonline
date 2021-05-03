@@ -15,7 +15,7 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('products');
 });
 
 Route::get('products', [ProductController::class,'index']);

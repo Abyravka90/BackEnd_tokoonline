@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('products', [ProductApiController::class,'index']);
+Route::post('products', [ProductApiController::class, 'store']);
+Route::put('products/{id}', [ProductApiController::class, 'update']);
+Route::get('products/{id}', [ProductApiController::class, 'show']);
+Route::delete('products/{id}', [ProductApiController::class, 'destroy']);
