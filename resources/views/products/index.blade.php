@@ -58,7 +58,14 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->price }}</td>
-                        <td><a href="{{ url('products/'.$item->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a></td>
+                        <td>
+                            <a href="{{ url('products/'.$item->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
+                            <form class="d-inline" action="{{ url('products/'.$item->id)}}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     @else

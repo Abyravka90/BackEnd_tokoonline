@@ -60,4 +60,11 @@ class ProductController extends Controller
         $product->update($request->all());
         return redirect('products')->with('status', 'Data Berhasil Dirubah');
     }
+
+    public function destroy($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('products')->with('status', 'Data Berhasil dihapus');
+    }
 }
