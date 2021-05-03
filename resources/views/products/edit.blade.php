@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('title', 'create')
+@section('title', 'edit')
     
 @section('breadcrumb')
 <div class="breadcrumbs">
@@ -15,7 +15,7 @@
         <div class="page-header float-right">
             <div class="page-title">
                 <ol class="breadcrumb text-right">
-                    <li class="active">create</li>
+                    <li class="active">edit</li>
                 </ol>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="pull-left">
-                    <strong>Tambah Product</strong>
+                    <strong>Edit Product</strong>
                 </div>
                 <div class="pull-right">
                     <a href="{{ url('products') }}" class="btn btn-secondary btn-sm"><i class="fa fa-undo"></i>&nbsp;Back</a>
@@ -38,11 +38,12 @@
             <div class="card-body">
                  <div class="row">
                      <div class="col-md-4 offset-md-4">
-                         <form action="{{ url('products') }}" method="POST">
+                         <form action="{{ url('products/'.$products->id) }}" method="POST">
+                            @method('put')
                             @csrf
                              <div class="form-group">
                                  <label>Nama Product</label>
-                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" autofocus>
+                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $products->name) }}" autofocus>
                                  @error('name')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -51,7 +52,7 @@
                              </div>
                              <div class="form-group">
                                  <label>Description</label>
-                                 <textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+                                 <textarea name="description" class="form-control @error('description') is-invalid @enderror">{{ old('description', $products->description) }}</textarea>
                                  @error('description')
                                  <div class="invalid-feedback">
                                     {{ $message }}
@@ -60,7 +61,7 @@
                              </div>
                              <div class="form-group">
                                  <label>Price</label>
-                                 <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+                                 <input type="number" name="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price', $products->price) }}">
                                  @error('price')
                                     <div class="invalid-feedback">
                                     {{ $message }}    
@@ -69,7 +70,7 @@
                              </div>
                              <div class="form-group">
                                  <label>image url</label>
-                                 <input type="text" class="form-control" name="image_url" value="{{ old('image_url') }}">
+                                 <input type="text" class="form-control" name="image_url" value="{{ old('image_url', $products->image_url) }}">
                              </div>
                              <button type="submit" class="btn btn-success">Save</button>
                          </form>

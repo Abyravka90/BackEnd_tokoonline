@@ -33,7 +33,7 @@
             {{ session('status') }}
         </div>
     @endif
-    
+
     <div class="animated fadeIn">
         <div class="card">
             <div class="card-body">
@@ -47,19 +47,31 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
+                        <th></th>
                     </tr>
                 </thead>    
                 <tbody>
+                    @if ($products->count() > 0)
                     @foreach ($products as $key => $item)    
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $products->firstItem()+$key }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->price }}</td>
+                        <td><a href="{{ url('products/'.$item->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a></td>
                     </tr>
                     @endforeach
+                    @else
+                    <tr>
+                        <td colspan="4" class="text-center">Data Kosong</td>
+                    </tr>
+                    @endif
                 </tbody>
                 </table>  
+                
+                <div class="pull-right">
+                    {{$products->links()}}
+                </div>
             </div>
         </div>
     </div><!-- .animated -->
