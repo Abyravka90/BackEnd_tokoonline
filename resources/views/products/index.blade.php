@@ -47,8 +47,8 @@
                         <th>Name</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th></th>
-                    </tr>
+                        <th>image</th>
+                     </tr>
                 </thead>    
                 <tbody>
                     @if ($products->count() > 0)
@@ -58,6 +58,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->description }}</td>
                         <td>{{ $item->price }}</td>
+                        <td><img class="img-thumbnail" style="max-height:150px;max-width:150px" src="{{ asset('img/'.$item->image_url)}}" alt=""></td>
                         <td>
                             <a href="{{ url('products/'.$item->id.'/edit') }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
                             <form class="d-inline" action="{{ url('products/'.$item->id)}}" method="post">
