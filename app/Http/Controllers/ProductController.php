@@ -11,7 +11,7 @@ class ProductController extends Controller
     //
     public function index()
     {
-        $products = DB::table('products')->simplePaginate(4);
+        $products = DB::table('products')->Paginate(4);
        return view('products.index', ['products' => $products]);
     }
 

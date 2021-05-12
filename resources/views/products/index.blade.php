@@ -48,6 +48,7 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>image</th>
+                        <th></th>
                      </tr>
                 </thead>    
                 <tbody>
